@@ -22,7 +22,7 @@ jobs:
       - name: docker  pull
         run: docker pull hashicorp/http-echo:latest
       - name: kind load
-        run: kind load docker-image hashicorp/http-echo:latest
+        run: kind load docker-image hashicorp/http-echo:latest --name kind-chart-testing
       - name: kubectl apply
         run: |
           cat <<EOF | kubectl apply -f -
