@@ -53,4 +53,9 @@ jobs:
             type: NodePort
           EOF
       - name: kubectl get
-        run: kubectl get pod -A          
+        run: | 
+          for i in {1..10}
+          do
+            kubectl get pod -A          
+            sleep 5s
+          done
