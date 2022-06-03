@@ -65,4 +65,4 @@ jobs:
           echo $cid
           export nodeport=`kubectl get svc banana-service -o jsonpath='{.spec.ports[0].nodePort}'`
           echo $nodeport
-          docker exec -ti $cid curl 127.0.0.1:$nodeport
+          docker exec $cid curl 127.0.0.1:$nodeport
