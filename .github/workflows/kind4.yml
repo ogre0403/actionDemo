@@ -19,5 +19,38 @@ jobs:
     steps:
       - name: Create k8s Kind Cluster
         uses: helm/kind-action@v1.2.0
-      - name: docker  
-        run: docker ps -a 
+      - name: docker  pull
+        run: docker pull hashicorp/http-echo:latest
+      - name: kind load
+        run: kind load docker-image hashicorp/http-echo:latest
+      - name: kubectl apply
+        run: |
+          cat <<EOF | kubectl apply -f -
+          kind: Pod
+          apiVersion: v1
+          metadata:
+            name: banana-app
+            labels:
+              app: banana
+          spec:
+            containers:
+              - name: banana-app
+                image: hashicorp/http-echo
+                args:
+                  - "-text=apple"
+          ---
+          kind: Service
+          apiVersion: v1
+          metadata:
+            name: banana-service
+          spec:
+            ports:
+            - port: 5678
+              protocol: TCP
+              targetPort: 5678
+            selector:
+              app: banana
+            type: NodePort
+          EOF
+      - name: kubectl get
+        run: kubectl get pod -A          
