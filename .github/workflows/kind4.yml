@@ -59,3 +59,5 @@ jobs:
             kubectl get pod -A          
             sleep 5s
           done
+      - name: curl
+        run: docker exec -ti `docker ps -q` curl 127.0.0.1:`oc get svc banana-service -o jsonpath='{.spec.ports[0].nodePort}'`
