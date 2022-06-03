@@ -20,9 +20,9 @@ jobs:
       - name: Create k8s Kind Cluster
         uses: helm/kind-action@v1.2.0
       - name: docker  pull
-        run: docker pull hashicorp/http-echo:latest
+        run: docker pull nginx:latest
       - name: kind load
-        run: kind load docker-image hashicorp/http-echo:latest --name chart-testing
+        run: kind load docker-image nginx:latest --name chart-testing
       - name: kubectl apply
         run: |
           cat <<EOF | kubectl apply -f -
@@ -55,7 +55,7 @@ jobs:
           EOF
       - name: kubectl get
         run: | 
-          for i in {1..10}
+          for i in {1..5}
           do
             kubectl get pod -A          
             sleep 5s
