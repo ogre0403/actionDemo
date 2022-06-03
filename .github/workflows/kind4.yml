@@ -35,9 +35,10 @@ jobs:
           spec:
             containers:
               - name: banana-app
-                image: hashicorp/http-echo
-                args:
-                  - "-text=apple"
+                image: nginx:latest
+                #image: hashicorp/http-echo
+                #args:
+                #  - "-text=apple"
           ---
           kind: Service
           apiVersion: v1
