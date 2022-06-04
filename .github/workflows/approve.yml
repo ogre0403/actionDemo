@@ -2,7 +2,7 @@ name: Automatic Approve
 on:
   schedule:
     - cron: "*/1 * * * *"
-  workflow_dispatch: 
+  workflow_dispatch:
 
 jobs:
   automatic-approve:
@@ -12,5 +12,5 @@ jobs:
       - name: Automatic Approve
         uses: mheap/automatic-approve-action@v1
         with:
-          token: ${{ secrets.PAT }}
+          token: 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
           workflows: "kind5.yml"
