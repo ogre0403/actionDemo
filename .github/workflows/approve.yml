@@ -12,5 +12,5 @@ jobs:
       - name: Automatic Approve
         uses: mheap/automatic-approve-action@v1
         with:
-          token: ${{ secrets.PAT }}
-          workflows: "kind5.yml"
+          token: ${{ secrets.SECRET_PAT }}
+          workflows: "policy.yml"
