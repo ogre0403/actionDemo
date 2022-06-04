@@ -9,6 +9,9 @@ jobs:
   block:
     runs-on: ubuntu-latest
     steps:
+      - uses: deepakputhraya/action-pr-title@master
+        with:
+          regex: '([a-z])+\/([a-z])+' # Regex the title should match.
       - uses: yykamei/block-merge-based-on-time@v1
         with:
           timezone: Asis/Taipei
