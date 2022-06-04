@@ -29,5 +29,7 @@ all: run
 	docker exec $(cid) curl 127.0.0.1:$(nodeport)
 	
 
+clean:
+	ls -al /
 
 
