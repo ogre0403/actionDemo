@@ -14,3 +14,4 @@ jobs:
           timezone: Asia/Taipei
           after: "00:00"
           before: "23:59"
+          prohibited-days-dates: "2022-06-01/2022-06-22"
