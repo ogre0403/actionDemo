@@ -15,4 +15,4 @@ jobs:
       - uses: yykamei/block-merge-based-on-time@v1
         with:
           timezone: Asia/Taipei
-          prohibited-days-dates: "2022-06-04/2022-06-10"
+          prohibited-days-dates: "2022-06-10/2022-06-12"
