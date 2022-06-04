@@ -10,13 +10,7 @@ on:
 jobs:
   close-pr:
     runs-on: "ubuntu-latest"
-    permissions:
-      pull-requests: write
-      repository-projects: write
     steps:
-      - uses: hmarr/auto-approve-action@v2
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
       - uses: superbrothers/close-pull-request@v3
         with:
           comment: "hi. please do not touch 'Makefile' and '.github/workflows/*'."
