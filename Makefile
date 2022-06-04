@@ -1,4 +1,4 @@
-ID := 'ogre0403'
+ID := ''
 
 cid := $(shell docker ps -q)
 image := $(shell grep -rh "image" manifest | cut -d ":" -f2- | sed -e 's/^[[:space:]]*//')
@@ -8,9 +8,14 @@ svc := $(shell for f in manifest/*; do cat $$f | yq '(.|select(.kind == "Service
 
 kind_name := chart-testing
 
+show_id:
+	$(eval ID := $(shell cat ID))
+	@if [ -z "${ID}" ] ; then echo "請在ID檔內填入學號" ; false ; fi
+	@echo HW1 from $(ID)
+	@echo
+	@echo
 
-
-prepare:
+prepare: show_id
 	docker pull $(image)
 	kind load docker-image $(image) --name $(kind_name)
 
