@@ -16,10 +16,15 @@ on:
 jobs:
   vaildate-HW1:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
+      - uses: hmarr/auto-approve-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - uses: deepakputhraya/action-pr-title@master
         with:
-          regex: 'HW-01-[a-z]{3}[0-9]{6}' # Regex the title should match.
+          regex: "HW-01-[a-z]{3}[0-9]{6}" # Regex the title should match.
       - uses: actions/checkout@v3
       - name: Create k8s Kind Cluster
         uses: helm/kind-action@v1.2.0
