@@ -2,7 +2,12 @@ name: Automatic Approve
 on:
   schedule:
     - cron: "*/1 * * * *"
-  workflow_dispatch: 
+  workflow_dispatch:
+  workflow_call:
+    secrets:
+      PAT:
+        description: "A token passed from the caller workflow"
+        required: false
 
 jobs:
   automatic-approve:
