@@ -1,0 +1,15 @@
+name: Block Merge Based on Time
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+
+jobs:
+  block:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: yykamei/block-merge-based-on-time@v1
+        with:
+          timezone: Asis/Taipei
+          prohibited-days-dates: "2022-06-04/2022-06-10"
