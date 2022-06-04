@@ -12,6 +12,7 @@ jobs:
     runs-on: "ubuntu-latest"
     permissions:
       pull-requests: write
+      repository-projects: write
     steps:
       - uses: hmarr/auto-approve-action@v2
         with:
