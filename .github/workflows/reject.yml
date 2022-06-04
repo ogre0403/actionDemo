@@ -1,0 +1,16 @@
+name: Test workflow
+
+on:
+  pull_request_target:
+    types: [opened, reopened]
+    paths:
+      - "Makefile"
+      - ".github/workflows/*"
+
+jobs:
+  test:
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: superbrothers/close-pull-request@v3
+        with:
+          comment: "hi. please do not touch 'untouchable_file'."
