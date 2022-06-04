@@ -1,0 +1,13 @@
+name: Block Merge Based on Time
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+jobs:
+  block:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: deepakputhraya/action-pr-title@master
+        with:
+          regex: "HW-01-[a-z]{3}[0-9]{6}" # Regex the title should match.
