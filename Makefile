@@ -8,10 +8,6 @@ svc := $(shell for f in manifest/*; do cat $$f | yq '(.|select(.kind == "Service
 
 kind_name := chart-testing
 
-var:
-	echo $(svc)
-	# svc := $(shell for f in manifest/*; do cat $$f | yq '(.|select(.kind == "Service")).metadata.name' ; done)
-
 
 
 prepare:
