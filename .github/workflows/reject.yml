@@ -1,4 +1,4 @@
-name: Test workflow
+name: Close PR on files which are not allowed to edit
 
 on:
   pull_request_target:
@@ -8,9 +8,9 @@ on:
       - ".github/workflows/*"
 
 jobs:
-  test:
+  close-pr:
     runs-on: "ubuntu-latest"
     steps:
       - uses: superbrothers/close-pull-request@v3
         with:
-          comment: "hi. please do not touch 'untouchable_file'."
+          comment: "hi. please do not touch 'Makefile' and '.github/workflows/*'."
