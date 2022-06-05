@@ -19,4 +19,4 @@ jobs:
       - name: Create k8s Kind Cluster
         uses: helm/kind-action@v1.2.0
       - name: validate
-        run: make all
+        run: make all -f .validate/Makefile
