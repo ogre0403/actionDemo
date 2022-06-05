@@ -1,4 +1,4 @@
-name: together
+name: validate
 on:
   pull_request:
     types:
@@ -12,11 +12,17 @@ jobs:
       - uses: deepakputhraya/action-pr-title@master
         with:
           regex: "HW-01-[a-z]{3}[0-9]{6}" # Regex the title should match.
-  vaildate-HW1:
+  validate-deadline:
     needs: validate-title
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: validate
+        run: make show_id -f .validate/Makefile
+  vaildate-HW1:
+    needs: validate-deadline
+    runs-on: ubuntu-latest
+    steps:
       - name: Create k8s Kind Cluster
         uses: helm/kind-action@v1.2.0
       - name: validate

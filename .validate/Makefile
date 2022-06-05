@@ -18,7 +18,7 @@ show_id:
 	@echo
 	@echo
 
-prepare: show_id
+prepare: 
 	docker pull $(image)
 	kind load docker-image $(image) --name $(kind_name)
 
