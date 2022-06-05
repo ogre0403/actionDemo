@@ -13,4 +13,4 @@ jobs:
     steps:
       - uses: superbrothers/close-pull-request@v3
         with:
-          comment: "hi. please do not touch '.validate/*' and '.github/workflows/*'."
+          comment: "請勿修改 '.validate/*' and '.github/workflows/' 目錄內的檔案."
