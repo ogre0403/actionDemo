@@ -4,6 +4,7 @@ on:
     types:
       - opened
       - reopened
+      - edited
 jobs:
   validate-title:
     runs-on: ubuntu-latest
