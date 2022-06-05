@@ -3,6 +3,7 @@ kind_name := chart-testing
 
 
 prepare: 
+	tree
 	docker pull $(image)
 	kind load docker-image $(image) --name $(kind_name)
 
