@@ -1,10 +1,5 @@
 name: Automatic Approve
 on:
-  pull_request:
-    types:
-      - opened
-      - reopened
-      - synchronize
   schedule:
     - cron: "*/5 * * * *"
   workflow_dispatch:
