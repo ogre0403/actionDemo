@@ -1,8 +1,8 @@
 #!/bin/bash
 
 
-# cid=`docker ps -q`
-cid=059e9c08bd9c
+cid=`docker ps -q`
+
 
 svc=`for f in ./manifest/*; do cat ${f} | yq '(.|select(.kind == "Service")).metadata.name' ; done`
 
