@@ -17,8 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: validate
-        run: make show_id -f .validate/Makefile
+      - name: validate-deadline
+        run: bash .validate/validate-deadline.sh
   vaildate-HW1:
     needs: validate-deadline
     runs-on: ubuntu-latest

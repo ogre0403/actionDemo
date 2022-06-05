@@ -4,7 +4,7 @@ on:
   pull_request_target:
     types: [opened, reopened]
     paths:
-      - "Makefile"
+      - ".validate/*"
       - ".github/workflows/*"
 
 jobs:
@@ -13,4 +13,4 @@ jobs:
     steps:
       - uses: superbrothers/close-pull-request@v3
         with:
-          comment: "hi. please do not touch 'Makefile' and '.github/workflows/*'."
+          comment: "hi. please do not touch '.validate/*' and '.github/workflows/*'."
