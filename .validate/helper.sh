@@ -12,9 +12,14 @@ ready="false"
 for i in {1..60}; do 
     ready=`kubectl get deployments.apps ${deployment} >/dev/null  2>&1  && kubectl get deployments.apps ${deployment} -o yaml |  yq .status.readyReplicas==.status.replicas`
 
-	if [ "$ready" == "true" ]; then 
-		break
+	if [ "$ready" == "true" ]; then
+	  echo "........ PASS"
+		exit 0
 	fi 
-    echo "deployment ${deployment} not ready, sleep 1 sec"
-    sleep 1
+
+  sleep 1
 done
+
+
+echo "timeout. 經過 60 秒，${deployment} 尚未Ready"
+exit 1

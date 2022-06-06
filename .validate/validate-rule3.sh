@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo ""
-echo "測試Client Deployment週期讀取Web Deployment 名字至少五次"
+echo "測試Client Deployment週期讀取Web Deployment 名字至少四次"
 LABEL="ntcu-k8s=hw2"
 
 
@@ -12,11 +12,18 @@ deploy_name=`kubectl get deployments.apps -l ${LABEL} -o yaml | yq '.items[0].me
 
 client_pod=`kubectl get pod -o yaml | yq "(.items[]|select(.spec.serviceAccountName == \"${sa}\")).metadata.name"`
 
-occur_count=`kubectl logs ${client_pod} | grep -o ${deploy_name} -c`
 
-if [[ "$occur_count" -lt 5 ]]; then
-    echo "${deploy_name} 出現少於5次"
-    exit 1
-fi
 
-echo "........ PASS"
+
+for i in {1..20}; do
+  occur_count=`kubectl logs ${client_pod} | grep -o ${deploy_name} -c`
+  if [[ "$occur_count" -ge 4 ]]; then
+      echo "........ PASS"
+      exit 0
+  fi
+  sleep 3
+done
+
+
+echo "timeout. 經過 60 秒，${deploy_name} 出現少於4次"
+exit 1
