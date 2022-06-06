@@ -1,6 +1,9 @@
 #!/bin/bash
 
-
+echo ""
+echo "驗證是否有建立Client Deployment，以及 使用的ServiceAccount 權限"
+##
+##
 
 sa=`for f in ./manifest/*; do cat ${f} | yq '(.|select(.kind == "ServiceAccount")).metadata.name' ; done`
 
@@ -66,3 +69,6 @@ if [[ $cani == "no" ]]; then
     echo "ServiceAccount $sa 無法刪除deployment"
     exit 1
 fi
+
+
+echo "........ PASS"
